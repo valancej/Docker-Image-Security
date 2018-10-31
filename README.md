@@ -14,7 +14,7 @@ Images are most often stored in a central location called a registry. From regis
 
 ## Continous approach
 
-A very fundamental approach to countering threats for container images is automation. Organizations should set up the tooling to analyze images in a continous manner. In short, development teams need a structured and reliable process for building and testing the Docker images that are built. For container image specific pipelines, tools specifically designed to uncover vulnerabilites, configuration defects, and other security best practices, should be employed. Additionally, this tooling should give developers the option to create governance around the images being scanned. Meaning, based on configurable policy rules/gates, images can pass or fail the image scan step in the pipeline, and not be allowed to progress further. 
+A very fundamental approach to countering threats for container images is automating building and testing. Organizations should set up the tooling to analyze images in a continous manner. In short, development teams need a structured and reliable process for building and testing the Docker images that are built. For container image specific pipelines, tools specifically designed to uncover vulnerabilites, configuration defects, and other security best practices, should be employed. Additionally, this tooling should give developers the option to create governance around the images being scanned. Meaning, based on configurable policy rules/gates, images can pass or fail the image scan step in the pipeline, and not be allowed to progress further. 
 
 A simple example of how this might look:
 
