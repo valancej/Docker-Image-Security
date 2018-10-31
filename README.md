@@ -91,4 +91,4 @@ Only verified packages from trusted sources should be downloaded and installed. 
 
 ## Implementation
 
-One tool for implementing the best practices above is Anchore(http://anchore.com). Anchore is a service that conducts static analysis on Docker images, and evaluates these images against user-defined checks. With Anchore, vulnerabilites within packages for OS and non-OS components can be identified, and the image configuration best practices described above can be enforced via policy rules. 
+One tool for implementing the best practices above is [Anchore](http://anchore.com). Anchore is a service that conducts static analysis on Docker images, and evaluates these images against user-defined checks. With Anchore, vulnerabilites within packages for OS and non-OS components can be identified, and the image configuration best practices described above can be enforced via policy rules. 
