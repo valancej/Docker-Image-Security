@@ -106,3 +106,18 @@ With Anchore, policies can be configured to check for the following:
 - Files
 
 By following a policy-based compliance approach, organizations can vastly improve their container image posture by implementing Anchore policies tightly mapped to the above container image best practices.
+
+## Example
+
+To see this in action, follow the instructions for installing [anchore-engine](https://github.com/anchore/anchore-engine) and the [anchore-cli](https://github.com/anchore/anchore-cli).
+
+To add an image to anchore:
+```
+anchore-cli image add docker.io/library/mysql:5.5
+```
+
+To view the vulnerable OS packages from the analyzed image:
+
+```
+anchore-cli image vuln docker.io/library/mysql:5.5 os
+```
