@@ -83,7 +83,7 @@ The `COPY` instruction copies files from the local host machine to the container
 
 ### Do not store secrets in Dockerfiles
 
-Do not store any secrets within container images. Developers may sometimes leave AWS keys, API keys, or other secrets inside of images. If attackers were do grab these secrets/keys they could be exploited. 
+Do not store any secrets within container images. Developers may sometimes leave AWS keys, API keys, or other secrets inside of images. If attackers were do grab these secrets/keys they could be exploited. Secrets should always be stored outside of images and provided dynamically at runtime as needed. 
 
 ### Only install verified packages in containers
 
@@ -91,4 +91,18 @@ Only verified packages from trusted sources should be downloaded and installed. 
 
 ## Implementation
 
-One tool for implementing the best practices above is [Anchore](http://anchore.com). Anchore is a service that conducts static analysis on Docker images, and evaluates these images against user-defined checks. With Anchore, vulnerabilites within packages for OS and non-OS components can be identified, and the image configuration best practices described above can be enforced via policy rules. 
+One tool for implementing the best practices above is [Anchore](http://anchore.com). Anchore is a service that conducts static analysis on Docker images, and evaluates these images against user-defined checks. With Anchore, vulnerabilites within packages for OS and non-OS components can be identified, and the image configuration best practices described above can be enforced via policy rules.
+
+With Anchore, policies can be configured to check for the following:
+
+- Vulnerabilities
+- Packages
+- Secrets
+- Image metadata
+- Exposed ports
+- Effective users
+- Dockerfile instructions
+- Password files
+- Files
+
+By following a policy-based compliance approach, organizations can vastly improve their container image posture, by implementing Anchore policies tightly mapped to the above container image best practices.
