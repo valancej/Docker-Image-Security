@@ -27,4 +27,13 @@ A simple example of how this might look:
  
  ## Image vulnerabilites
 
- As part of our continous approach
+ As part of our continous approach, packages and components within the image should be scanned for common and known vulnerabilities. Image scanning should be able to uncover vulnerabilites contained within all layers of the image, not just the base layer. Moreover, image inspection and analysis should be able to detect vulnerabilies for OS and non-OS packages container within the images, as there are oftentimes vulnerable third-party libraries as part of application code. Should a new vulnerability for a package be published after the image has been scanned, the tool should be able to retrieve new vulnerability info for the applicable component, and alert the developers so remediation can begin.
+
+ ### Policy 
+
+ Organizations should be able to create and enforce policy rules based on the severity of the vulnerability as defined by the [Common Vulnerability Scoring System](https://www.first.org/cvss/).
+
+ Example: If the image contains any vulnerable packages with a severity greater than medium, stop this build. 
+
+ ## Image configuration
+
