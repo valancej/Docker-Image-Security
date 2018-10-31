@@ -105,4 +105,4 @@ With Anchore, policies can be configured to check for the following:
 - Password files
 - Files
 
-By following a policy-based compliance approach, organizations can vastly improve their container image posture, by implementing Anchore policies tightly mapped to the above container image best practices.
+By following a policy-based compliance approach, organizations can vastly improve their container image posture by implementing Anchore policies tightly mapped to the above container image best practices.
