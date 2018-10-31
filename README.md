@@ -45,8 +45,46 @@ A simple example of how this might look:
 
 ### Use trusted base images for container images
 
-Ensure that the container image is based on another established and trusted base image downloaded over a secure channel. Docker images curated by the Docker community. For organizations, developers should be connecting and downloading images from secure, trusted, private registries. These trusted images should be selected from minimalistic technologies whenever possible to reduce attack surface areas. Docker Content Trust and Notary can be configured to give developers the ability to verify images tags and enforce client-side signing.
+Ensure that the container image is based on another established and trusted base image downloaded over a secure channel. Docker images curated by the Docker community. For organizations, developers should be connecting and downloading images from secure, trusted, private registries. These trusted images should be selected from minimalistic technologies whenever possible to reduce attack surface areas. 
+
+Docker Content Trust and Notary can be configured to give developers the ability to verify images tags and enforce client-side signing for data sent to and received from remote Docker registries. Content trust is disabled by default. 
 
 For more info see [Docker Content Trust](https://docs.docker.com/engine/security/trust/content_trust/) and [Notary](https://docs.docker.com/notary/getting_started/).
 
-### 
+### Do not install unnecessary packages in the container
+
+As stated above, images should be selected from minimalistic technologies whenever possible to reduce size and attack surface. Additionally, packages outside the scope and purpose of the container should not be installed. 
+
+
+### Add the `HEALTHCHECK` instruction to the container image
+
+The `HEALTHCHECK` instruction tells Docker how to test a container to check that it is still working. This instruction should be added to Dockerfiles. Based on the result of the healthcheck (unhealthy), docker could exit a non-working container and instatiate a new one. 
+
+### Do not use update instructions alone in the Dockerfile
+
+Do not use update instructions such as `apt-get update` alone or in a single line in the Dockerfile. Instead, run the following: 
+
+```
+RUN apt-get update && apt-get install -y \
+  bzr \
+  cvs \
+  git \
+  mercurial \
+  subversion
+```
+
+This will help avoid duplication of packages and make updates easier. 
+
+**Related** Also see [leveraging the build cache](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache) for insight on how to reduce the number of layers and overall Dockerfile best practices.
+
+### Use COPY instead of ADD when writing Dockerfiles
+
+The `COPY` instruction copies files from the local host machine to the container file system. The `ADD` instruction can potentially retrieve files from remote URLs and perform unpacking operations. Since `ADD` could bring in files remotely, the risk of malicious packages and vulnerabilities from remote URLs is increased. 
+
+### Do not store secrets in Dockerfiles
+
+Do not store any secrets within container images. Developers may sometimes leave AWS keys, API keys, or other secrets inside of images. If attackers were do grab these secrets/keys they could be exploited. 
+
+### Only install verified packages in containers
+
+Only verified packages from trusted sources should be downloaded and installed. If you are downloading a package via `apt-get` from official Debian repositories, this is all set. To see how this can be verified within a Dockerfile see [Redis Dockerfile](https://github.com/docker-library/redis/blob/dc6dc737baa434528ce31948b22b4c6ccc78793a/5.0/Dockerfile).
