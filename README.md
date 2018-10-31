@@ -75,7 +75,7 @@ RUN apt-get update && apt-get install -y \
 
 This will help avoid duplication of packages and make updates easier. 
 
-**Related** Also see [leveraging the build cache](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache) for insight on how to reduce the number of layers and overall Dockerfile best practices.
+**Related** also see [leveraging the build cache](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache) for insight on how to reduce the number of layers and overall Dockerfile best practices.
 
 ### Use COPY instead of ADD when writing Dockerfiles
 
