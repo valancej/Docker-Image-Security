@@ -37,3 +37,16 @@ A simple example of how this might look:
 
  ## Image configuration
 
+ Images should be configured to adhere with common best practices listed below. 
+
+ ### Create a user for the container image
+
+ Containers should be run as a non-root user, whenever possible. The `USER` instruction within the Dockerfile defines this. 
+
+### Use trusted base images for container images
+
+Ensure that the container image is based on another established and trusted base image downloaded over a secure channel. Docker images curated by the Docker community. For organizations, developers should be connecting and downloading images from secure, trusted, private registries. These trusted images should be selected from minimalistic technologies whenever possible to reduce attack surface areas. Docker Content Trust and Notary can be configured to give developers the ability to verify the integrity of image.
+
+For more info see [Docker Content Trust](https://docs.docker.com/engine/security/trust/content_trust/) and [Notary](https://docs.docker.com/notary/getting_started/).
+
+### 
