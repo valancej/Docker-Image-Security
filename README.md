@@ -88,3 +88,7 @@ Do not store any secrets within container images. Developers may sometimes leave
 ### Only install verified packages in containers
 
 Only verified packages from trusted sources should be downloaded and installed. If you are downloading a package via `apt-get` from official Debian repositories, this is all set. To see how this can be verified within a Dockerfile see [Redis Dockerfile](https://github.com/docker-library/redis/blob/dc6dc737baa434528ce31948b22b4c6ccc78793a/5.0/Dockerfile).
+
+## Implementation
+
+One tool for implementing the best practices above is Anchore(http://anchore.com). Anchore is a service that conducts static analysis on Docker images, and evaluates these images against user-defined checks. With Anchore, vulnerabilites within packages for OS and non-OS components can be identified, and the image configuration best practices described above can be enforced via policy rules. 
