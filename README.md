@@ -6,7 +6,7 @@ Previously, in our Docker Security Best Practices series, we took a deeper look 
 
 ## Background on images
 
-Simply put, a Docker image is a package that contains all requirements and metadata needed to run a Docker container. In essense, an image is a template from which a container can be instantiated. Images are immutatable, meaning, once they've been built, they cannot be changed. If someone were to make a change, a new image would be built as a result. 
+Simply put, a Docker image is a collection of data that includes all files, software packages and metadata needed to create a running instance of a Docker container. In essense, an image is a template from which a container can be instantiated. Images are immutatable, meaning, once they've been built, they cannot be changed. If someone were to make a change, a new image would be built as a result. 
 
 Docker images are built in layers. A core compoment of images is known as the 'base layer'. This is the foundation upon which all other components/layers are added to. Commonly, base layers are minimal, and typically respresentative of common OSs.
 
@@ -45,7 +45,7 @@ A simple example of how this might look:
 
 ### Use trusted base images for container images
 
-Ensure that the container image is based on another established and trusted base image downloaded over a secure channel. Docker images curated by the Docker community. For organizations, developers should be connecting and downloading images from secure, trusted, private registries. These trusted images should be selected from minimalistic technologies whenever possible to reduce attack surface areas. 
+Ensure that the container image is based on another established and trusted base image downloaded over a secure channel. Official repositories are Docker images curated and optimized by the Docker community or associated vendor. For organizations, developers should be connecting and downloading images from secure, trusted, private registries. These trusted images should be selected from minimalistic technologies whenever possible to reduce attack surface areas. 
 
 Docker Content Trust and Notary can be configured to give developers the ability to verify images tags and enforce client-side signing for data sent to and received from remote Docker registries. Content trust is disabled by default. 
 
@@ -105,20 +105,7 @@ With Anchore, policies can be configured to check for the following:
 - Password files
 - Files
 
-## Example
-
-To see this in action, follow the instructions for installing [anchore-engine](https://github.com/anchore/anchore-engine) and the [anchore-cli](https://github.com/anchore/anchore-cli).
-
-To add an image to anchore:
-```
-anchore-cli image add docker.io/library/mysql:5.5
-```
-
-To view the vulnerable OS packages from the analyzed image:
-
-```
-anchore-cli image vuln docker.io/library/mysql:5.5 os
-```
+One potential implementation for building secure and compliant container images in a CI pipeline can be achieved using the open source Jenkins CI tool along with Anchore for scanning and policy checks
 
 ## Conclusion
 
